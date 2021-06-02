@@ -2,17 +2,18 @@ package ar.edu.unlam.pb2.parcial1.tm;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Genero;
+import ar.edu.unlam.pb2.parcial1.Interfaces.Vendible;
 
-public class Pelicula extends Producto {
+public class Pelicula extends Producto implements Vendible{
 
 	private Integer anoDeEstreno;
 	private Actor actor;
 	private String director;
 	private Genero genero;
 	private List <Actor> actores;
+	private Double precioVenta;
 	
 	public Pelicula (Integer codigo, String descripcion, Genero tipo, Integer ano, String director) {
 		super(codigo, descripcion);
@@ -37,12 +38,11 @@ public class Pelicula extends Producto {
 	}
 	
 	public Boolean actua(Actor actor) {
-		Boolean actua = false;
 		for (Actor actual: actores) {
 			if(actual.equals(actor)) {
-				actua = true;
+				return true;
 			} else {
-				actua = false;
+				return false;
 			}
 		}
 		return true;
@@ -94,6 +94,17 @@ public class Pelicula extends Producto {
 
 	public List <Actor> getActores() {
 		return actores;
+	}
+
+	@Override
+	public Double getPrecioVenta() {
+		// TODO Auto-generated method stub
+		return this.precioVenta;
+	}
+
+	@Override
+	public void setPrecioVenta(Double precio) {
+		this.precioVenta = precio;
 	}
 
 	

@@ -6,10 +6,15 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Estado;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Genero;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.TipoDeConsola;
+import ar.edu.unlam.pb2.parcial1.Interfaces.Alquilable;
+import ar.edu.unlam.pb2.parcial1.Interfaces.Vendible;
 import ar.edu.unlam.pb2.parcial1.tm.Actor;
+import ar.edu.unlam.pb2.parcial1.tm.Cliente;
 import ar.edu.unlam.pb2.parcial1.tm.Comestible;
 import ar.edu.unlam.pb2.parcial1.tm.Libro;
 import ar.edu.unlam.pb2.parcial1.tm.Pelicula;
+import ar.edu.unlam.pb2.parcial1.tm.Producto;
+import ar.edu.unlam.pb2.parcial1.tm.Videoclub;
 import ar.edu.unlam.pb2.parcial1.tm.Videojuego;
 
 public class PrimerParcial2021 {
@@ -84,7 +89,7 @@ public class PrimerParcial2021 {
 		
 		// Validación
 		assertEquals(CODIGO_ESPERADO, comestible.getCodigo());
-		assertEquals(DESCRIPCION_ESPERADA, comestible.getCodigo());
+		assertEquals(DESCRIPCION_ESPERADA, comestible.getDescripcion());
 	}
 	
 	@Test

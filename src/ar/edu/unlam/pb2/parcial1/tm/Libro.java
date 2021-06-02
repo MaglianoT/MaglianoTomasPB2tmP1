@@ -1,9 +1,12 @@
 package ar.edu.unlam.pb2.parcial1.tm;
 
-public class Libro extends Producto{
+import ar.edu.unlam.pb2.parcial1.Interfaces.Vendible;
+
+public class Libro extends Producto implements Vendible{
 	
 	private String autor;
 	private String editorial;
+	private Double precioVenta;
 
 	public Libro(Integer codigo, String descripcion, String autor, String editorial) {
 		super(codigo, descripcion);
@@ -25,6 +28,18 @@ public class Libro extends Producto{
 
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
+	}
+
+	@Override
+	public Double getPrecioVenta() {
+
+		return this.precioVenta;
+	}
+
+	@Override
+	public void setPrecioVenta(Double precio) {
+		this.precioVenta = precio;
+		
 	}
 
 }
