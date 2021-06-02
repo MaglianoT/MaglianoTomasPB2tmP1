@@ -199,6 +199,7 @@ public class PrimerParcial2021 {
 		Cliente nuevoCliente = new Cliente(CODIGO_ESPERADO, APELLIDO_ESPERADO, NOMBRE_ESPERADO, EDAD_ESPERADA);		
 		
 		video.agregarProducto(nuevoProducto);
+		nuevoProducto.setCalificacion(Calificacion.MAYOR18);
 		
 		// Validación
 		assertEquals(ESTADO_INICIAL_ESPERADO, video.buscarProducto(nuevoProducto).getEstadoActual());

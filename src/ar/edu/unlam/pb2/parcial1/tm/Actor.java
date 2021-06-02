@@ -8,6 +8,14 @@ public class Actor {
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public String getApellido() {
+		return this.apellido;
+	}
 
 
 	@Override

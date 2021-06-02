@@ -44,7 +44,7 @@ public class Pelicula extends Producto implements Vendible, Alquilable{
 	
 	public Boolean actua(Actor actor) {
 		for (Actor actual: actores) {
-			if(actual.equals(actor)) {
+			if(actual.getNombre().equals((actor).getNombre())) {
 				return true;
 			} else {
 				return false;
