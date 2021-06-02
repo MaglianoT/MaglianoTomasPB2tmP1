@@ -3,6 +3,7 @@ package ar.edu.unlam.pb2.parcial1;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unlam.pb2.parcial1.Enumeradores.Calificacion;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Estado;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Genero;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.TipoDeConsola;
@@ -183,7 +184,7 @@ public class PrimerParcial2021 {
 		final Genero GENERO_ESPERADO = Genero.SUSPENSO;
 		final Integer ANO_DE_ESTRENO_ESPERADO = 2010;
 		final String DIRECTOR_ESPERADO = "Darren Aronofsky";
-		final String ACTOR_1_ESPERADO = "Natalie Portman";
+		final Actor ACTOR_1_ESPERADO = new Actor("Natalie", "Portman");
 		final String NOMBRE_VIDEOCLUB = "Blockbuster";
 		final Integer CODIGO_CLIENTE_ESPERADO = 1;
 		final String NOMBRE_ESPERADO = "Camila";
@@ -209,19 +210,46 @@ public class PrimerParcial2021 {
 	@Test
 	public void queSeNoSePuedaVenderUnComestibleVendido() {
 		// Preparación
+		final Integer CODIGO_ESPERADO = 1;
+		final String DESCRIPCION_ESPERADA = "Lays";
+		final String NOMBRE_VIDEOCLUB = "Blockbuster";
+		final Integer CODIGO_CLIENTE_ESPERADO = 2;
+		final String APELLIDO_ESPERADO = "Mercado";
+		final String NOMBRE_ESPERADO = "Juan";
+		final Integer EDAD_ESPERADA = 23;
 		
 		// Ejecución
+		Videoclub video = new Videoclub(NOMBRE_VIDEOCLUB);
+		Comestible comestible = new Comestible(CODIGO_ESPERADO, DESCRIPCION_ESPERADA);
+		Cliente cliente = new Cliente(CODIGO_CLIENTE_ESPERADO, APELLIDO_ESPERADO, NOMBRE_ESPERADO, EDAD_ESPERADA);
+		
+		video.agregarProducto(comestible);
+		comestible.setEstadoActual(Estado.VENDIDO);
 		
 		// Validación
+		assertFalse(video.vender(comestible, cliente));
 	}
 	
 	@Test
 	public void queSeNoSePuedaAlquilarUnJuegoAlquilado() {
 		// Preparación
+		final String APELLIDO_ESPERADO = "Tero";
+		final String NOMBRE_ESPERADO = "Manuel";
+		final Integer EDAD_ESPERADA = 34;
+		final Integer CODIGO_CLIENTE_ESPERADO = 5;
+		final String NOMBRE_VIDEOCLUB = "Blockbuster";
+		final Integer CODIGO_VIDEOJUEGO = 25;
 		
 		// Ejecución
+		Videoclub video = new Videoclub(NOMBRE_VIDEOCLUB);
+		Cliente cliente = new Cliente(CODIGO_CLIENTE_ESPERADO, APELLIDO_ESPERADO, NOMBRE_ESPERADO, EDAD_ESPERADA);
+		Videojuego juego = new Videojuego(CODIGO_VIDEOJUEGO, NOMBRE_VIDEOCLUB, TipoDeConsola.PLAY_STATION);
+		
+		video.agregarProducto(juego);
+		juego.setEstadoActual(Estado.ALQUILADO);
 		
 		// Validación
+		assertFalse(video.alquilar(juego, cliente));
 	}
 	
 	@Test
@@ -236,10 +264,27 @@ public class PrimerParcial2021 {
 	@Test
 	public void queSeNoSePuedaAlquilarUnPeliculaAUnMenor() {
 		// Preparación
+		final String APELLIDO_ESPERADO = "Lana";
+		final String NOMBRE_ESPERADO = "Maria";
+		final Integer EDAD_ESPERADA = 15;
+		final Integer CODIGO_CLIENTE_ESPERADO = 21;
+		final String NOMBRE_VIDEOCLUB = "Blockbuster";
+		final Integer CODIGO_PELICULA = 63;
+		final String DESCRIPCION_PELICULA = "Kill Bill";
+		final Genero TIPO_PELICULA = Genero.ACCION;
+		final Integer ANO_ESPERADO = 2003;
+		final String DIRECTOR_ESPERADO = "Quentin Tarantino";
 		
 		// Ejecución
+		Videoclub video = new Videoclub(NOMBRE_VIDEOCLUB);
+		Cliente cliente = new Cliente(CODIGO_CLIENTE_ESPERADO, APELLIDO_ESPERADO, NOMBRE_ESPERADO, EDAD_ESPERADA);
+		Pelicula peli = new Pelicula(CODIGO_PELICULA, DESCRIPCION_PELICULA, TIPO_PELICULA, ANO_ESPERADO, DIRECTOR_ESPERADO);
+		
+		cliente.setEdad(15);
+		video.agregarProducto(peli);
+		peli.setCalificacion(Calificacion.MAYOR18);
 		
 		// Validación
+		assertFalse(video.alquilar(peli, cliente));
 	}
-	
 }
