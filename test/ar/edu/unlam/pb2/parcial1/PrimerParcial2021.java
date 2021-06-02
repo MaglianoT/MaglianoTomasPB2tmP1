@@ -6,19 +6,24 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Estado;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.Genero;
 import ar.edu.unlam.pb2.parcial1.Enumeradores.TipoDeConsola;
+import ar.edu.unlam.pb2.parcial1.tm.Actor;
+import ar.edu.unlam.pb2.parcial1.tm.Comestible;
+import ar.edu.unlam.pb2.parcial1.tm.Libro;
+import ar.edu.unlam.pb2.parcial1.tm.Pelicula;
+import ar.edu.unlam.pb2.parcial1.tm.Videojuego;
 
-class PrimerParcial2021 {
+public class PrimerParcial2021 {
 
 	@Test
-	void queSePuedaCrearUnaPelicula() {
+	public void queSePuedaCrearUnaPelicula() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Exterminators II";
 		final Genero GENERO_ESPERADO = Genero.ACCION;
 		final Integer ANO_DE_ESTRENO_ESPERADO = 1993;
 		final String DIRECTOR_ESPERADO = "Carlos Galettini";
-		final String ACTOR_1_ESPERADO = "Guillermo Francella";
-		final String ACTOR_2_ESPERADO = "Emilio Disi";
+		final Actor ACTOR_1_ESPERADO = new Actor("Guillermo", "Francella");
+		final Actor ACTOR_2_ESPERADO = new Actor("Emilio", "Disi");
 		
 		// Ejecución
 		Pelicula pelicula = new Pelicula(CODIGO_ESPERADO, DESCRIPCION_ESPERADA, GENERO_ESPERADO, ANO_DE_ESTRENO_ESPERADO, DIRECTOR_ESPERADO);
@@ -34,8 +39,8 @@ class PrimerParcial2021 {
 		assertTrue(pelicula.actua(ACTOR_1_ESPERADO));
 		
 	}
-	
-	void queSePuedaCrearUnVideojuego() {
+	@Test
+	public void queSePuedaCrearUnVideojuego() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Fornite";
@@ -46,12 +51,12 @@ class PrimerParcial2021 {
 		
 		// Validación
 		assertEquals(CODIGO_ESPERADO, juego.getCodigo());
-		assertEquals(DESCRIPCION_ESPERADA, juego.getCodigo());
+		assertEquals(DESCRIPCION_ESPERADA, juego.getDescripcion());
 		assertEquals(CONSOLA_ESPERADA, juego.getTipo());
 		
 	}
-	
-	void queSePuedaCrearUnLibro() {
+	@Test
+	public void queSePuedaCrearUnLibro() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Fifty Shades of Grey";
@@ -63,13 +68,13 @@ class PrimerParcial2021 {
 		
 		// Validación
 		assertEquals(CODIGO_ESPERADO, libro.getCodigo());
-		assertEquals(DESCRIPCION_ESPERADA, libro.getCodigo());
+		assertEquals(DESCRIPCION_ESPERADA, libro.getDescripcion());
 		assertEquals(AUTOR_ESPERADO, libro.getAutor());
 		assertEquals(EDITORIAL_ESPERADA, libro.getEditorial());
 		
 	}
-	
-	void queSePuedaCrearUnComestible() {
+	@Test
+	public void queSePuedaCrearUnComestible() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Chomps";
@@ -83,7 +88,7 @@ class PrimerParcial2021 {
 	}
 	
 	@Test
-	void queUnaPeliculaSeaVendible() {
+	public void queUnaPeliculaSeaVendible() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Exterminators II";
@@ -101,7 +106,7 @@ class PrimerParcial2021 {
 	}
 
 	@Test
-	void queUnJuegoSeaAlquilable() {
+	public void queUnJuegoSeaAlquilable() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Fornite";
@@ -118,7 +123,7 @@ class PrimerParcial2021 {
 	}
 
 	@Test
-	void queSePuedaCrearUnCliente() {
+	public void queSePuedaCrearUnCliente() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String NOMBRE_ESPERADO = "Camila";
@@ -137,7 +142,7 @@ class PrimerParcial2021 {
 	}
 
 	@Test
-	void queSePuedaVenderUnLibro() {
+	public void queSePuedaVenderUnLibro() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "Fifty Shades of Grey";
@@ -166,7 +171,7 @@ class PrimerParcial2021 {
 	}
 	
 	@Test
-	void queSePuedaAlquilarUnaPelicula() {
+	public void queSePuedaAlquilarUnaPelicula() {
 		// Preparación
 		final Integer CODIGO_ESPERADO = 1;
 		final String DESCRIPCION_ESPERADA = "El Cisne Negro";
@@ -197,7 +202,7 @@ class PrimerParcial2021 {
 	}
 	
 	@Test
-	void queSeNoSePuedaVenderUnComestibleVendido() {
+	public void queSeNoSePuedaVenderUnComestibleVendido() {
 		// Preparación
 		
 		// Ejecución
@@ -206,7 +211,7 @@ class PrimerParcial2021 {
 	}
 	
 	@Test
-	void queSeNoSePuedaAlquilarUnJuegoAlquilado() {
+	public void queSeNoSePuedaAlquilarUnJuegoAlquilado() {
 		// Preparación
 		
 		// Ejecución
@@ -215,7 +220,7 @@ class PrimerParcial2021 {
 	}
 	
 	@Test
-	void queLuegoDeDevueltaUnaPeliculaSePuedaAlquilar() {
+	public void queLuegoDeDevueltaUnaPeliculaSePuedaAlquilar() {
 		// Preparación
 		
 		// Ejecución
@@ -224,7 +229,7 @@ class PrimerParcial2021 {
 	}
 	
 	@Test
-	void queSeNoSePuedaAlquilarUnPeliculaAUnMenor() {
+	public void queSeNoSePuedaAlquilarUnPeliculaAUnMenor() {
 		// Preparación
 		
 		// Ejecución
